@@ -324,6 +324,54 @@
     .info-box.fuchsia { background: var(--fuchsia-light); border: 1.5px solid rgba(217,70,239,0.28); }
     .info-box p { margin: 0; font-size: 13px; }
 
+    /* Проблема → Решение → Этап → Результат → Следующий этап */
+    .flow-chain { display: grid; gap: 0; margin: 16px 0; }
+    .flow-item { padding: 14px 18px; border-radius: 14px; border: 1.5px solid var(--line); background: #f8fbfe; }
+    .flow-item .flow-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 5px; }
+    .flow-item p { margin: 0; font-size: 13px; }
+    .flow-arrow { text-align: center; font-size: 18px; color: var(--cyan-2); padding: 4px 0; opacity: .55; }
+    .flow-item.problem { border-color: rgba(234,88,12,0.30); background: var(--orange-light); }
+    .flow-item.problem .flow-label { color: var(--orange); }
+    .flow-item.solution { border-color: rgba(14,165,233,0.30); background: #e0f2fe; }
+    .flow-item.solution .flow-label { color: var(--cyan-2); }
+    .flow-item.stage-phase { border-color: rgba(124,58,237,0.28); background: var(--purple-light); }
+    .flow-item.stage-phase .flow-label { color: var(--purple); }
+    .flow-item.result { border-color: rgba(5,150,105,0.28); background: var(--green-light); }
+    .flow-item.result .flow-label { color: var(--green); }
+    .flow-item.next { border-color: rgba(217,70,239,0.28); background: var(--fuchsia-light); }
+    .flow-item.next .flow-label { color: var(--fuchsia); }
+
+    /* Воронка продаж CRM */
+    .sales-funnel { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 18px; }
+    .sf-step {
+      width: 100%; padding: 13px 20px; border-radius: 14px; text-align: center;
+      border: 1.5px solid rgba(14,165,233,0.22); background: linear-gradient(90deg,#f0f9ff,#f8fbfe);
+    }
+    .sf-step strong { color: var(--text); }
+    .sf-arrow { color: var(--cyan-2); font-size: 16px; line-height: 1; padding: 2px 0; opacity: .7; }
+
+    /* Приоритеты MoSCoW */
+    .priority-card { padding: 20px; border-radius: 18px; border: 1.5px solid var(--line); background: #f8fbfe; }
+    .priority-card .p-sub { font-size: 12px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .1em; font-weight: 800; }
+    .priority-items { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 6px; }
+    .priority-items li {
+      position: relative; padding: 8px 12px 8px 26px; border-radius: 10px;
+      background: rgba(255,255,255,0.7); border: 1.5px solid rgba(14,165,233,0.14);
+      font-size: 13px; color: var(--muted);
+    }
+    .priority-items li::before {
+      content: ""; position: absolute; left: 11px; top: 15px; width: 7px; height: 7px; border-radius: 50%;
+    }
+    .priority-card.must { border-color: rgba(185,28,28,0.28); background: #fff5f5; }
+    .priority-card.must .p-sub { color: #b91c1c; }
+    .priority-card.must .priority-items li::before { background: #b91c1c; }
+    .priority-card.should { border-color: rgba(217,119,6,0.28); background: #fffaf0; }
+    .priority-card.should .p-sub { color: var(--yellow); }
+    .priority-card.should .priority-items li::before { background: var(--yellow); }
+    .priority-card.nice { border-color: rgba(14,165,233,0.28); background: #f0f9ff; }
+    .priority-card.nice .p-sub { color: var(--cyan-2); }
+    .priority-card.nice .priority-items li::before { background: var(--cyan-2); }
+
     @media (max-width: 1100px) {
       .shell { grid-template-columns: 1fr; }
       .sidebar { position: relative; height: auto; border-right: none; border-bottom: 1.5px solid rgba(14,165,233,0.25); }
@@ -339,27 +387,26 @@
     <div class="brand">
       <div class="label">CRM-стратегия · Сезон 2026</div>
       <h1>CRM-маркетинг<br>парка «Сказка»</h1>
-      <p>Июнь — 30 сентября. 5 стадий. 50 000 билетов.</p>
+      <p>Май — сентябрь. 5 этапов внедрения. Главная цель сезона — продать 50 000 билетов через CRM-канал.</p>
     </div>
     <nav class="nav" id="nav">
       <div class="nav-section">Старт</div>
-      <a href="#goals">Цели сезона</a>
-      <a href="#strategy-goals">3 задачи стратегии</a>
+      <a href="#overview">50 000 билетов</a>
       <a href="#context">Исходная точка</a>
-      <a href="#identification">Идентификация базы с почтами</a>
+      <a href="#goal">Цель сезона</a>
+      <a href="#funnel">Как CRM генерирует продажи</a>
       <a href="#tickets">Билеты по месяцам</a>
-      <div class="nav-section">5 стадий</div>
-      <a href="#stage1">Стадия 1 — Техническое внедрение</a>
-      <a href="#stage2">Стадия 2 — Сегментация и контент</a>
-      <a href="#stage3">Стадия 3 — RFM-сегментация</a>
-      <a href="#stage4">Стадия 4 — Омниканальность</a>
-      <a href="#stage5">Стадия 5 — Программа лояльности</a>
-      <div class="nav-section">Аналитика</div>
-      <a href="#metrics">Метрики и KPI</a>
+      <div class="nav-section">5 этапов</div>
+      <a href="#stage1">Этап 1 — Инфраструктура</a>
+      <a href="#stage2">Этап 2 — Сегментация</a>
+      <a href="#stage3">Этап 3 — Автоматизация</a>
+      <a href="#stage4">Этап 4 — Накопление данных (RFM)</a>
+      <a href="#stage5">Этап 5 — Масштабирование</a>
       <div class="nav-section">Тактика</div>
       <a href="#segments">Продуктовые сегменты</a>
-      <a href="#triggers">Триггерные рассылки</a>
       <a href="#rfm">RFM-модель</a>
+      <a href="#triggers">Триггерные рассылки</a>
+      <a href="#priorities">Приоритеты</a>
       <a href="#roadmap">Road map</a>
     </nav>
   </aside>
@@ -367,65 +414,30 @@
   <main class="content">
     <div class="container">
 
-      <!-- ЦЕЛИ -->
-      <section class="slide" id="goals">
-        <div class="eyebrow">Цели сезона 2026</div>
-        <h2>Что должен дать CRM-канал</h2>
-        <div class="goal-row" style="grid-template-columns:repeat(2,1fr);">
-          <div class="goal-card">
-            <div class="g-label">Продажи</div>
-            <div class="g-num" style="color:var(--cyan-2);">50 000</div>
-            <p>билетов через CRM-канал за сезон (май — август)</p>
+      <!-- 50 000 БИЛЕТОВ: НОВАЯ / СТАРАЯ БАЗА -->
+      <section class="slide" id="overview">
+        <div class="eyebrow">Главная цифра сезона</div>
+        <h2>Продаём 50 000 билетов через CRM-канал</h2>
+        <p class="lead">Цель раскладывается на два источника: часть билетов продаём новой базе (лиды, которых CRM привлекает и доводит до первой покупки), часть — старой базе (реактивация и повторные покупки уже существующих клиентов).</p>
+        <div class="goal-row">
+          <div class="goal-card" style="background:linear-gradient(180deg,#ddf0fc,#c8e7f8);">
+            <div class="g-label">Итого</div>
+            <div class="g-num" style="color:var(--text);">50 000</div>
+            <p>билетов через CRM-канал за сезон</p>
           </div>
-          <div class="goal-card">
-            <div class="g-label">Конверсия</div>
-            <div class="g-num" style="color:var(--fuchsia);">10%</div>
-            <p>целевая конверсия базы в покупку по каждой кампании</p>
+          <div class="goal-card" style="background:linear-gradient(180deg,#f0fdf8,#d1fae5);">
+            <div class="g-label">Новая база</div>
+            <div class="g-num" style="color:var(--green);">27 000</div>
+            <p>билетов новым клиентам, пришедшим через Welcome-цепочку и первую покупку</p>
           </div>
-        </div>
-        <div class="cards-3" style="margin-top:16px;">
-          <div class="card success">
-            <div class="small">Сегмент «Семья»</div>
-            <div class="metric green">3×</div>
-            <p>покупки за сезон на каждого клиента этого сегмента</p>
-          </div>
-          <div class="card" style="border-color:rgba(217,119,6,0.25);background:linear-gradient(180deg,#fef9ee,#fef3c7);">
-            <div class="small">Сегмент «Молодёжь»</div>
-            <div class="metric yellow">12×</div>
-            <p>покупок за сезон на каждого клиента этого сегмента</p>
-          </div>
-          <div class="card purple-card">
-            <div class="small">Сегмент «VIP»</div>
-            <div class="metric purple">2×</div>
-            <p>покупки за сезон на каждого VIP-клиента</p>
+          <div class="goal-card" style="background:linear-gradient(180deg,#fae8ff,#fae8ff);">
+            <div class="g-label">Старая база</div>
+            <div class="g-num" style="color:var(--fuchsia);">23 000</div>
+            <p>билетов существующим клиентам через реактивацию, повторные покупки и RFM</p>
           </div>
         </div>
         <div class="info-box cyan">
-          <p><strong style="color:var(--cyan-2);">Средний чек:</strong> ~3 000 ₽ на билет. <strong style="color:var(--text);">Логика:</strong> не просто разовые продажи, а выстраивание повторных покупок через сегментированные цепочки — каждый тип клиента получает релевантное предложение в нужный момент.</p>
-        </div>
-      </section>
-
-      <!-- 3 ЗАДАЧИ СТРАТЕГИИ -->
-      <section class="slide" id="strategy-goals">
-        <div class="eyebrow">Стратегические задачи · Старт</div>
-        <h2>3 задачи CRM-стратегии</h2>
-        <p class="lead">Прежде чем масштабировать рассылки, нужно решить три взаимосвязанные задачи: заново раскрыть старую базу, нарастить новую и продумать коммуникацию в условиях, когда данные о покупках и кассе не интегрированы с CRM.</p>
-        <div class="cards-3">
-          <div class="card">
-            <div class="stage cyan">Задача 1</div>
-            <h3>Повысить выручку с помощью CRM-маркетинга</h3>
-            <p>Определить стратегию коммуникации с неизвестной старой базой — контактами без истории покупок и понятного профиля.</p>
-          </div>
-          <div class="card success">
-            <div class="stage green">Задача 2</div>
-            <h3>Собрать новую базу: email и телефоны</h3>
-            <p>Нарастить количество контактов с валидными email и номерами телефонов для расширения охвата CRM-каналов.</p>
-          </div>
-          <div class="card purple-card">
-            <div class="stage fuchsia">Задача 3</div>
-            <h3>Продумать карту коммуникаций без интеграции с кассой</h3>
-            <p>Выстроить сценарии рассылок с учётом отсутствия интеграции данных о покупках и контактов из кассовой системы.</p>
-          </div>
+          <p><strong style="color:var(--cyan-2);">Логика:</strong> новая база растёт за счёт трафика сайта и Welcome-цепочки (см. раздел «Как CRM генерирует продажи»), старая база — за счёт очистки, реактивации и сегментации уже собранных контактов. CRM не гарантирует фиксированную выручку — оба потока развиваются поэтапно вместе с инфраструктурой, сегментацией и автоматизацией.</p>
         </div>
       </section>
 
@@ -435,22 +447,7 @@
           <div>
             <div class="eyebrow">Исходная точка</div>
             <h2>С чего начинаем</h2>
-            <p class="lead">На старте нет ни инфраструктуры CRM-маркетинга, ни данных о клиентах в пригодном виде. Задача первого месяца — создать фундамент, без которого ни одна рассылка не даст предсказуемого результата.</p>
-            <div class="cards-2" style="margin:16px 0 12px; gap:12px;">
-              <div class="big-number" style="min-height:130px; padding:20px 24px;">
-                <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.14em; color:var(--cyan-2); margin-bottom:4px;">База контактов</div>
-                <div class="num" style="font-size:46px;">39 400</div>
-                <p style="margin:0; font-size:13px;">человек в общей базе</p>
-              </div>
-              <div class="big-number" style="min-height:130px; padding:20px 24px; background:linear-gradient(135deg,#fae8ff,#ede9fe); border-color:rgba(217,70,239,0.25);">
-                <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.14em; color:var(--fuchsia); margin-bottom:4px;">Профили с данными</div>
-                <div class="num" style="font-size:46px; color:var(--fuchsia);">1 800</div>
-                <p style="margin:0; font-size:13px;">человек с заполненными данными (~4,6% базы)</p>
-              </div>
-            </div>
-            <div class="info-box orange" style="margin-bottom:12px;">
-              <p><strong style="color:var(--orange);">Ключевая задача:</strong> идентифицировать и обогатить данные оставшихся 37 600 контактов — это основной резерв роста CRM-канала.</p>
-            </div>
+            <p class="lead">На старте нет ни инфраструктуры CRM-маркетинга, ни данных о клиентах в пригодном виде. Задача первого этапа — создать фундамент, без которого ни одна рассылка не даст предсказуемого результата.</p>
             <div class="pill-list">
               <span class="pill red">Нет ESP</span>
               <span class="pill red">Нет сегментации</span>
@@ -480,89 +477,79 @@
               <div class="card warn">
                 <div class="small">Проблема</div>
                 <h3 style="margin-top:7px;">Нет автоматизации</h3>
-                <p>Ни одного триггерного сценария: брошенная корзина, повторная покупка, реактивация.</p>
+                <p>Ни одного триггерного сценария: приветствие, повторная покупка, реактивация.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ИДЕНТИФИКАЦИЯ БАЗЫ -->
-      <section class="slide" id="identification">
-        <div class="eyebrow">Подготовка базы · Шаг 0</div>
-        <h2>Идентификация базы с почтами</h2>
-        <p class="lead">Перед запуском любых рассылок необходимо получить актуальные данные из Битрикс24, сопоставить их с существующей базой и обновить профили клиентов до единого стандарта.</p>
-
-        <div class="cards-3" style="margin-bottom:20px;">
-          <div class="card">
-            <div class="stage cyan">Шаг 1</div>
-            <h3>Выгрузка данных из Битрикс24</h3>
-            <p>Экспорт контактов, сделок и истории взаимодействий через API Битрикс24 или стандартный экспорт в CSV. Получаем email, телефон, имя, историю покупок.</p>
-            <ul class="checklist" style="margin-top:10px;">
-              <li>Подключение к API Битрикс24 (REST API)</li>
-              <li>Выгрузка контактов с полями: email, имя, телефон</li>
-              <li>Выгрузка сделок: сумма, статус, дата</li>
-              <li>Экспорт истории активности клиентов</li>
-            </ul>
+      <!-- ЦЕЛЬ СЕЗОНА -->
+      <section class="slide" id="goal">
+        <div class="eyebrow">Цель сезона 2026</div>
+        <h2>Что должен дать CRM-канал</h2>
+        <div class="hero">
+          <div class="big-number">
+            <div class="small">Главная и единственная цель канала</div>
+            <div class="num">50 000</div>
+            <p>билетов, проданных через CRM-канал за сезон (май — сентябрь)</p>
           </div>
-          <div class="card">
-            <div class="stage cyan">Шаг 2</div>
-            <h3>Идентификация и сопоставление</h3>
-            <p>Сопоставляем данные из Битрикс24 с существующими Excel-файлами. Ищем дублей по email и телефону, объединяем записи в единый профиль клиента.</p>
-            <ul class="checklist" style="margin-top:10px;">
-              <li>Поиск дублей по email и номеру телефона</li>
-              <li>Слияние записей из разных источников</li>
-              <li>Присвоение уникального ID каждому клиенту</li>
-              <li>Определение основного канала коммуникации</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="stage cyan">Шаг 3</div>
-            <h3>Обновление данных о клиентах</h3>
-            <p>Обогащаем профили клиентов: добавляем недостающие поля, актуализируем email-адреса, проставляем сегмент и историю покупок для дальнейшей работы в ESP.</p>
-            <ul class="checklist" style="margin-top:10px;">
-              <li>Заполнение пустых полей из смежных источников</li>
-              <li>Актуализация email (валидация через сервис)</li>
-              <li>Добавление тегов: сегмент, дата последней покупки</li>
-              <li>Загрузка обновлённой базы в ESP</li>
-            </ul>
+          <div class="info-box fuchsia" style="margin-top:0; display:flex; align-items:center;">
+            <p style="font-size:14px; line-height:1.7;">«По мере накопления данных, развития сегментации, автоматизации и RFM CRM будет постепенно увеличивать долю продаж канала и помогать достигнуть цели сезона — продажи 50 000 билетов».</p>
           </div>
         </div>
+        <div class="pill-list">
+          <span class="pill">CRM не гарантирует фиксированную сумму выручки</span>
+          <span class="pill">Эффект канала растёт поэтапно, а не одномоментно</span>
+        </div>
+        <div class="cards-3" style="margin-top:16px;">
+          <div class="card success">
+            <div class="small">Сегмент «Семья»</div>
+            <div class="metric green">3×</div>
+            <p>покупки за сезон на каждого клиента этого сегмента</p>
+          </div>
+          <div class="card" style="border-color:rgba(217,119,6,0.25);background:linear-gradient(180deg,#fef9ee,#fef3c7);">
+            <div class="small">Сегмент «Молодёжь»</div>
+            <div class="metric yellow">12×</div>
+            <p>покупок за сезон на каждого клиента этого сегмента</p>
+          </div>
+          <div class="card purple-card">
+            <div class="small">Сегмент «VIP»</div>
+            <div class="metric purple">2×</div>
+            <p>покупки за сезон на каждого VIP-клиента</p>
+          </div>
+        </div>
+        <div class="info-box cyan">
+          <p><strong style="color:var(--cyan-2);">Логика:</strong> не разовые продажи, а выстраивание повторных покупок через сегментированные цепочки — каждый тип клиента получает релевантное предложение в нужный момент.</p>
+        </div>
+      </section>
 
-        <table>
-          <thead>
-            <tr><th>Источник данных</th><th>Что берём</th><th>Приоритет</th><th>Формат</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Битрикс24 — Контакты</strong></td>
-              <td>Email, имя, телефон, дата создания, ответственный менеджер</td>
-              <td style="color:var(--green); font-weight:700;">Высокий</td>
-              <td>REST API / CSV</td>
-            </tr>
-            <tr>
-              <td><strong>Битрикс24 — Сделки</strong></td>
-              <td>Сумма, статус сделки, продукт, дата закрытия</td>
-              <td style="color:var(--green); font-weight:700;">Высокий</td>
-              <td>REST API / CSV</td>
-            </tr>
-            <tr>
-              <td><strong>Excel-файлы (архив)</strong></td>
-              <td>Исторические данные покупателей билетов</td>
-              <td style="color:var(--yellow); font-weight:700;">Средний</td>
-              <td>Excel → CSV</td>
-            </tr>
-            <tr>
-              <td><strong>Касса / сайт</strong></td>
-              <td>Транзакции, даты покупок, тип билета</td>
-              <td style="color:var(--yellow); font-weight:700;">Средний</td>
-              <td>Выгрузка из системы</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="info-box cyan" style="margin-top:16px;">
-          <p><strong style="color:var(--cyan-2);">Результат:</strong> единая актуальная база клиентов с email, историей покупок и сегментными тегами — готова к импорту в ESP и запуску первых рассылок. Битрикс24 остаётся основным источником правды для обновления данных на протяжении всего сезона.</p>
+      <!-- КАК CRM ГЕНЕРИРУЕТ ПРОДАЖИ -->
+      <section class="slide" id="funnel">
+        <div class="eyebrow">Механика канала</div>
+        <h2>Как CRM будет генерировать продажи</h2>
+        <p class="lead">На сайте парка — около 10 000 посетителей в день. CRM не «продаёт» одной рассылкой: она выстраивает систему повторных касаний, которая постепенно доводит посетителя сайта до постоянного покупателя.</p>
+        <div class="sales-funnel">
+          <div class="sf-step" style="max-width:760px;"><strong>10 000</strong> посетителей сайта в день</div>
+          <div class="sf-arrow">↓</div>
+          <div class="sf-step" style="max-width:680px;">≈ <strong>0,3%</strong> оставляют заявку</div>
+          <div class="sf-arrow">↓</div>
+          <div class="sf-step" style="max-width:610px;">часть заявок попадает в <strong>CRM</strong></div>
+          <div class="sf-arrow">↓</div>
+          <div class="sf-step" style="max-width:550px;">проходит <strong>Welcome-цепочку</strong></div>
+          <div class="sf-arrow">↓</div>
+          <div class="sf-step" style="max-width:500px;"><strong>сегментируется</strong> по продуктовому интересу</div>
+          <div class="sf-arrow">↓</div>
+          <div class="sf-step" style="max-width:460px;">получает <strong>персонализированные</strong> коммуникации</div>
+          <div class="sf-arrow">↓</div>
+          <div class="sf-step" style="max-width:420px;">регулярно получает <strong>полезный контент</strong></div>
+          <div class="sf-arrow">↓</div>
+          <div class="sf-step" style="max-width:380px;">получает <strong>триггерные письма</strong></div>
+          <div class="sf-arrow">↓</div>
+          <div class="sf-step" style="max-width:340px; border-color:rgba(5,150,105,0.35); background:var(--green-light);">становится <strong style="color:var(--green);">повторным покупателем</strong></div>
+        </div>
+        <div class="info-box green">
+          <p><strong style="color:var(--green);">Важно:</strong> CRM увеличивает продажи не одной рассылкой, а системой повторных коммуникаций. Чем дольше работает система, тем выше в ней доля людей на нижних, самых ценных ступенях воронки.</p>
         </div>
       </section>
 
@@ -570,105 +557,118 @@
       <section class="slide" id="tickets">
         <div class="eyebrow">Декомпозиция по месяцам</div>
         <h2>50 000 билетов — помесячный план</h2>
-        <p class="lead">Распределение учитывает стадии внедрения CRM: июнь — разворачивание инфраструктуры и первые рассылки, пик — август–сентябрь, когда запущена полная сегментация и RFM.</p>
+        <p class="lead">Распределение учитывает этапы внедрения CRM: старт — разворачивание инфраструктуры и сегментации, пик — когда запущены автоматизация, RFM и дополнительные каналы.</p>
         <table class="month-table">
           <thead>
             <tr>
-              <th>Месяц</th><th>Стадия CRM</th><th>Доля сезона</th>
+              <th>Месяц</th><th>Этап CRM</th><th>Доля сезона</th>
               <th>Билеты (план)</th><th>Конверсия</th><th>Ключевой драйвер</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td><strong>Июнь</strong></td><td>Стадия 1–2 — настройка + первые рассылки</td><td>18%</td><td><strong>9 000</strong></td><td>~8%</td><td>Настройка ESP, очистка базы, первые рассылки</td></tr>
-            <tr><td><strong>Июль</strong></td><td>Стадия 2 — контент-план в полную силу</td><td>25%</td><td><strong>12 500</strong></td><td>10%</td><td>3 рассылки/нед + триггеры по сегментам</td></tr>
-            <tr><td><strong>Август</strong></td><td>Стадия 3 — RFM с середины месяца</td><td>27%</td><td><strong>13 500</strong></td><td>10%</td><td>RFM-продажи + сегментированные офферы</td></tr>
-            <tr><td><strong>Сентябрь</strong></td><td>Стадия 3–4 — RFM + омниканальность</td><td>30%</td><td><strong>15 000</strong></td><td>10–12%</td><td>Пик активности, полная автоматизация</td></tr>
+            <tr><td><strong>Июнь</strong></td><td>Этап 1–2 — инфраструктура + первые сегменты</td><td>18%</td><td><strong>9 000</strong></td><td>~8%</td><td>Настройка ESP, очистка базы, первые рассылки</td></tr>
+            <tr><td><strong>Июль</strong></td><td>Этап 2–3 — сегментация в полную силу + автоматизация</td><td>25%</td><td><strong>12 500</strong></td><td>10%</td><td>Контент-план по сегментам + автоматические цепочки</td></tr>
+            <tr><td><strong>Август</strong></td><td>Этап 3–4 — автоматизация + начало RFM</td><td>27%</td><td><strong>13 500</strong></td><td>10%</td><td>A/B тесты, оптимизация, первые RFM-метки</td></tr>
+            <tr><td><strong>Сентябрь</strong></td><td>Этап 4–5 — RFM + масштабирование каналов</td><td>30%</td><td><strong>15 000</strong></td><td>10–12%</td><td>Пик активности, дополнительные каналы</td></tr>
             <tr><td><strong>Итого</strong></td><td>—</td><td><strong>100%</strong></td><td><strong>50 000</strong></td><td><strong>~10%</strong></td><td>—</td></tr>
           </tbody>
         </table>
+        <div class="info-box cyan">
+          <p><strong style="color:var(--cyan-2);">Важно:</strong> помесячный план описывает динамику продаж канала, а не гарантированную выручку — конкретные суммы зависят от среднего чека и не фиксируются заранее.</p>
+        </div>
       </section>
 
-      <!-- СТАДИЯ 1 -->
+      <!-- ЭТАП 1 -->
       <section class="slide" id="stage1">
         <div class="funnel-step s1" style="border-radius:16px; margin-bottom:18px;">
           <div class="stage-header">
             <div class="stage-badge" style="background:linear-gradient(135deg,#ea580c,#fb923c);color:#fff;">1</div>
             <div>
-              <div class="stage orange">Июнь 2026 (1-я половина) · Стадия 1</div>
-              <h2 style="margin:0;">Техническое внедрение CRM-маркетинга</h2>
+              <div class="stage orange">Май — Июнь 2026 · Этап 1</div>
+              <h2 style="margin:0;">Создание инфраструктуры</h2>
             </div>
           </div>
         </div>
-        <p class="lead">Без этой стадии всё остальное невозможно: письма без верификации домена уйдут в спам, а грязная база уничтожит репутацию отправителя. Апрель — это фундамент.</p>
+        <div class="flow-chain">
+          <div class="flow-item problem"><div class="flow-label">Проблема</div><p>Нет технической инфраструктуры для работы с базой клиентов: письма не долетают, данные разрознены по Excel-файлам.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item solution"><div class="flow-label">Решение</div><p>Внедрение ESP; настройка SPF/DKIM/DMARC; очистка базы; объединение данных; первые реактивационные кампании.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item stage-phase"><div class="flow-label">Этап внедрения</div><p>Май — июнь 2026 · Этап 1</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item result"><div class="flow-label">Результат</div><p>CRM становится технически готовой к работе.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item next"><div class="flow-label">Следующий этап</div><p>Переход к построению сегментации базы (Этап 2).</p></div>
+        </div>
         <div class="cards-3">
           <div class="card">
             <div class="stage orange">Шаг 1</div>
             <h3>Выбор ESP</h3>
-            <p>Оцениваем сервисы: поддержка русскоязычных баз, сегментация, триггерные сценарии, стоимость. Рассматриваем Unisender, Sendsay, Mindbox, RetailRocket.</p>
-            <ul class="checklist" style="margin-top:10px;">
-              <li>Сравнение тарифов и возможностей</li>
-              <li>Тест доставляемости на тестовых адресах</li>
-              <li>Проверка интеграций с сайтом и кассой</li>
-            </ul>
+            <p>Оцениваем сервисы: поддержка русскоязычных баз, сегментация, триггерные сценарии, стоимость.</p>
           </div>
           <div class="card">
             <div class="stage orange">Шаг 2</div>
-            <h3>Проверка записей домена</h3>
-            <p>Настройка SPF, DKIM и DMARC — обязательное условие для доставки писем во входящие.</p>
-            <ul class="checklist" style="margin-top:10px;">
-              <li>Проверка и настройка SPF-записи</li>
-              <li>Генерация и публикация DKIM</li>
-              <li>Политика DMARC (мониторинг → reject)</li>
-              <li>Прогрев домена (постепенный рост отправок)</li>
-            </ul>
+            <h3>Настройка домена</h3>
+            <p>SPF, DKIM и DMARC — обязательное условие для доставки писем во входящие, плюс постепенный прогрев домена.</p>
           </div>
           <div class="card">
             <div class="stage orange">Шаг 3</div>
             <h3>Очистка базы и реактивация</h3>
             <p>Объединяем Excel-файлы в единую базу, удаляем дублей и невалидные адреса, запускаем первую реактивационную рассылку.</p>
-            <ul class="checklist" style="margin-top:10px;">
-              <li>Дедупликация и нормализация данных</li>
-              <li>Email-валидация (сервис проверки адресов)</li>
-              <li>Первая реактивационная рассылка</li>
-              <li>Сбор подтверждений (double opt-in)</li>
-            </ul>
           </div>
-        </div>
-        <div class="info-box orange">
-          <p><strong style="color:var(--orange);">Результат стадии 1:</strong> рабочий ESP-аккаунт, верифицированный домен, очищенная единая база, готовая к сегментированным отправкам. Первый замер активности базы.</p>
         </div>
       </section>
 
-      <!-- СТАДИЯ 2 -->
+      <!-- ЭТАП 2 -->
       <section class="slide" id="stage2">
         <div class="funnel-step s2" style="border-radius:16px; margin-bottom:18px;">
           <div class="stage-header">
             <div class="stage-badge" style="background:linear-gradient(135deg,#0284c7,#38bdf8);color:#fff;">2</div>
             <div>
-              <div class="stage cyan">Июнь — Июль 2026 · Стадия 2</div>
-              <h2 style="margin:0;">Сегментация базы и контент-план</h2>
+              <div class="stage cyan">Июнь — Июль 2026 · Этап 2</div>
+              <h2 style="margin:0;">Построение сегментации</h2>
             </div>
           </div>
         </div>
-        <p class="lead">Разбиваем базу по продуктовому интересу и запускаем регулярные рассылки: 3 раза в неделю на каждый сегмент. Одновременно — первые триггерные цепочки.</p>
+        <div class="flow-chain">
+          <div class="flow-item problem"><div class="flow-label">Проблема</div><p>Все клиенты получают одинаковые сообщения — нет релевантности предложений.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item solution"><div class="flow-label">Решение</div><p>Продуктовые сегменты (Семья, Молодёжь, VIP, Night Riders, Несегментированная база), карты коммуникаций, автоматические цепочки, единый контент-план.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item stage-phase"><div class="flow-label">Этап внедрения</div><p>Июнь — июль 2026 · Этап 2</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item result"><div class="flow-label">Результат</div><p>Каждый сегмент начинает получать релевантный контент.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item next"><div class="flow-label">Следующий этап</div><p>Запуск автоматизации коммуникаций (Этап 3).</p></div>
+        </div>
         <div class="row">
           <div class="col-7">
-            <h3>Сегментация по продуктовому интересу</h3>
+            <h3>Продуктовые сегменты</h3>
             <div class="cards-2" style="margin-top:11px; gap:11px;">
               <div class="card success">
                 <div class="stage green">Сегмент A</div>
                 <h3>Семья</h3>
-                <p>Пары с детьми и семьи с одним родителем. Безопасность, отдых для всех, удобный маршрут, доступные тарифы, совместное время.</p>
+                <p>Пары с детьми и семьи с одним родителем. Безопасность, отдых для всех, удобный маршрут, доступные тарифы.</p>
               </div>
               <div class="card" style="border-color:rgba(217,119,6,0.25);background:linear-gradient(180deg,#fef9ee,#fef3c7);">
                 <div class="stage yellow">Сегмент B</div>
                 <h3>Молодёжь</h3>
-                <p>Студенты и школьники. Экстрим, адреналин, контент для соцсетей. Компании по 5–6 человек. Утренние и вечерние тарифы.</p>
+                <p>Студенты и школьники. Экстрим, адреналин, контент для соцсетей. Компании по 5–6 человек.</p>
               </div>
-              <div class="card purple-card" style="grid-column:span 2;">
+              <div class="card purple-card">
                 <div class="stage fuchsia">Сегмент C</div>
                 <h3>VIP</h3>
-                <p>Комфортное времяпрепровождение и экономия времени. Эксклюзивный опыт, быстрый доступ, высокий уровень сервиса без лишних шагов.</p>
+                <p>Комфортное времяпрепровождение и экономия времени. Эксклюзивный опыт, быстрый доступ, высокий сервис.</p>
+              </div>
+              <div class="card" style="border-color:rgba(124,58,237,0.20); background:linear-gradient(180deg,#f5f3ff,#ede9fe);">
+                <div class="stage purple">Сегмент D</div>
+                <h3>Night Riders</h3>
+                <p>Взрослые гости вечерних и ночных сессий. Экстремальные аттракционы в вечернем свете, атмосфера, тематические ночные события.</p>
+              </div>
+              <div class="card" style="grid-column:span 2; border-color:rgba(14,165,233,0.14);">
+                <div class="stage cyan">Сегмент E</div>
+                <h3>Несегментированная база</h3>
+                <p>Часть базы, по которой ещё недостаточно данных о продуктовом интересе. Получает общий контент-план до накопления истории поведения, после чего переводится в один из продуктовых сегментов.</p>
               </div>
             </div>
           </div>
@@ -684,180 +684,112 @@
                 <p style="margin:0; font-size:13px;">Оффер, дедлайн, эксклюзивное предложение под выходные. Прямая конверсия в покупку.</p>
               </div>
               <div style="padding:12px 14px; border-radius:12px; background:#f0f9ff; border:1.5px solid var(--line);">
-                <p style="margin:0; font-size:12px;"><strong style="color:var(--text);">3 рассылки/нед</strong> на каждый сегмент. Разные темы — нет ощущения спама.</p>
+                <p style="margin:0; font-size:12px;"><strong style="color:var(--text);">Единый контент-план</strong> и карта коммуникаций на каждый сегмент — без дублирования и хаотичных отправок.</p>
               </div>
             </div>
           </div>
-        </div>
-        <div style="margin-top:20px;">
-          <h3>Триггерные рассылки — снижение доли отказа и дожим до покупки</h3>
-          <div class="trigger-list">
-            <div class="trigger-item">
-              <div class="trigger-icon">🛒</div>
-              <div>
-                <div class="trigger-when">Брошенная корзина</div>
-                <p style="margin:3px 0 0; font-size:13px;">Напоминание через 1 час, повторное через 24 часа с напоминанием о ценности покупки.</p>
-              </div>
-              <div class="trigger-badge">+1 ч / +24 ч</div>
-            </div>
-            <div class="trigger-item">
-              <div class="trigger-icon">👋</div>
-              <div>
-                <div class="trigger-when">Приветственная цепочка</div>
-                <p style="margin:3px 0 0; font-size:13px;">3 письма: знакомство с парком → что входит в билет → оффер на первую покупку.</p>
-              </div>
-              <div class="trigger-badge">День 0 / 2 / 5</div>
-            </div>
-            <div class="trigger-item">
-              <div class="trigger-icon">🎟️</div>
-              <div>
-                <div class="trigger-when">После покупки билета</div>
-                <p style="margin:3px 0 0; font-size:13px;">Подготовка к визиту, маршрут, советы. Формирует правильные ожидания и снижает отказы у входа.</p>
-              </div>
-              <div class="trigger-badge">За 2 дня до</div>
-            </div>
-            <div class="trigger-item">
-              <div class="trigger-icon">⭐</div>
-              <div>
-                <div class="trigger-when">После посещения</div>
-                <p style="margin:3px 0 0; font-size:13px;">Сбор отзыва + оффер на следующий визит. Запускаем механику возврата.</p>
-              </div>
-              <div class="trigger-badge">+2 дня</div>
-            </div>
-            <div class="trigger-item">
-              <div class="trigger-icon">💤</div>
-              <div>
-                <div class="trigger-when">Реактивация молчащих</div>
-                <p style="margin:3px 0 0; font-size:13px;">Не открывал 30 дней → письмо «скучаем», 60 дней → персональный оффер на возврат.</p>
-              </div>
-              <div class="trigger-badge">30 / 60 дней</div>
-            </div>
-          </div>
-        </div>
-        <div class="info-box cyan">
-          <p><strong style="color:var(--cyan-2);">Результат стадии 2:</strong> 3 сегмента (Семья, Молодёжь, VIP) с активными цепочками рассылок, 5 триггерных сценариев в работе, первые данные о конверсии по сегментам.</p>
         </div>
       </section>
 
-      <!-- МЕТРИКИ -->
-      <section class="slide" id="metrics">
-        <div class="eyebrow">Аналитика · KPI сезона 2026</div>
-        <h2>Метрики отслеживания CRM-канала</h2>
-        <p class="lead">Каждая метрика измеряется еженедельно в разрезе сегментов (Семья / Молодёжь / VIP) и по каждой стадии внедрения.</p>
-
-        <div class="cards-4" style="margin-bottom:20px;">
-          <div class="card">
-            <div class="stage cyan">CR в заявку</div>
-            <div class="metric cyan">→ %</div>
-            <h3>Конверсия в заявку</h3>
-            <p>Доля получателей рассылки, которые кликнули и перешли к оформлению заказа.</p>
-            <div style="margin-top:10px; padding:9px 12px; border-radius:10px; background:#e0f2fe; font-size:12px; color:var(--cyan-2); font-weight:600;">Клики → оформление / Доставлено × 100</div>
-          </div>
-          <div class="card success">
-            <div class="stage green">CR в покупку</div>
-            <div class="metric green">10%</div>
-            <h3>Конверсия в покупку</h3>
-            <p>Доля получателей, которые завершили оплату. Цель сезона — 10% от активной базы.</p>
-            <div style="margin-top:10px; padding:9px 12px; border-radius:10px; background:var(--green-light); font-size:12px; color:var(--green); font-weight:600;">Оплаченные заказы / Доставлено × 100</div>
-          </div>
-          <div class="card purple-card">
-            <div class="stage fuchsia">Средний чек</div>
-            <div class="metric fuchsia">3 000 ₽</div>
-            <h3>Средний чек на клиента</h3>
-            <p>Средняя сумма одной покупки в разрезе сегментов. Цель — удержание и рост через апгрейд.</p>
-            <div style="margin-top:10px; padding:9px 12px; border-radius:10px; background:var(--fuchsia-light); font-size:12px; color:var(--fuchsia); font-weight:600;">Выручка сегмента / Кол-во покупок</div>
+      <!-- ЭТАП 3 -->
+      <section class="slide" id="stage3">
+        <div class="funnel-step s3" style="border-radius:16px; margin-bottom:18px;">
+          <div class="stage-header">
+            <div class="stage-badge" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;">3</div>
+            <div>
+              <div class="stage purple">Июль — Август 2026 · Этап 3</div>
+              <h2 style="margin:0;">Запуск автоматизации</h2>
+            </div>
           </div>
         </div>
-
-        <div class="cards-4">
-          <div class="card">
-            <div class="stage purple">LTV</div>
-            <div class="metric purple">↑</div>
-            <h3>Lifetime Value</h3>
-            <p>Совокупная выручка с одного клиента за весь сезон. Основной показатель эффективности программы лояльности.</p>
-            <div style="margin-top:10px; padding:9px 12px; border-radius:10px; background:var(--purple-light); font-size:12px; color:var(--purple); font-weight:600;">Средний чек × Кол-во покупок клиента</div>
+        <div class="flow-chain">
+          <div class="flow-item problem"><div class="flow-label">Проблема</div><p>Коммуникации требуют ручной работы и не масштабируются на весь объём базы.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item solution"><div class="flow-label">Решение</div><p>Автоматические цепочки: Welcome, Первая покупка, Повторная покупка, Upsell, Реактивация. Первые A/B тесты и регулярная оптимизация.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item stage-phase"><div class="flow-label">Этап внедрения</div><p>Июль — август 2026 · Этап 3</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item result"><div class="flow-label">Результат</div><p>Коммуникации работают без ручного участия, растёт доля повторных покупок.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item next"><div class="flow-label">Следующий этап</div><p>Накопление данных для перехода к RFM (Этап 4).</p></div>
+        </div>
+        <div class="trigger-list">
+          <div class="trigger-item">
+            <div class="trigger-icon">👋</div>
+            <div>
+              <div class="trigger-when">Welcome</div>
+              <p style="margin:3px 0 0; font-size:13px;">Знакомство с парком → что входит в билет → оффер на первую покупку.</p>
+            </div>
+            <div class="trigger-badge">День 0 / 2 / 5</div>
           </div>
-          <div class="card warn">
-            <div class="stage orange">CAC</div>
-            <div class="metric orange">↓</div>
-            <h3>Стоимость привлечения</h3>
-            <p>Затраты на привлечение одного нового клиента через CRM-канал. Цель — снижать при росте базы.</p>
-            <div style="margin-top:10px; padding:9px 12px; border-radius:10px; background:var(--orange-light); font-size:12px; color:var(--orange); font-weight:600;">Бюджет CRM-канала / Новые клиенты</div>
+          <div class="trigger-item">
+            <div class="trigger-icon">🎟️</div>
+            <div>
+              <div class="trigger-when">Первая покупка</div>
+              <p style="margin:3px 0 0; font-size:13px;">Подготовка к визиту, маршрут, советы. Формирует правильные ожидания.</p>
+            </div>
+            <div class="trigger-badge">До / после визита</div>
           </div>
-          <div class="card warn">
-            <div class="stage orange">CPS</div>
-            <div class="metric orange">↓</div>
-            <h3>Стоимость продажи</h3>
-            <p>Стоимость одной совершённой продажи через CRM. Включает затраты на ESP, контент и ручной труд.</p>
-            <div style="margin-top:10px; padding:9px 12px; border-radius:10px; background:var(--orange-light); font-size:12px; color:var(--orange); font-weight:600;">Бюджет CRM-канала / Кол-во продаж</div>
+          <div class="trigger-item">
+            <div class="trigger-icon">🔁</div>
+            <div>
+              <div class="trigger-when">Повторная покупка</div>
+              <p style="margin:3px 0 0; font-size:13px;">Сбор отзыва + оффер на следующий визит. Запускаем механику возврата.</p>
+            </div>
+            <div class="trigger-badge">+2 дня после визита</div>
           </div>
-          <div class="card success">
-            <div class="stage green">Retention</div>
-            <div class="metric green">↑</div>
-            <h3>Удержание клиентов</h3>
-            <p>Доля клиентов, совершивших 2+ покупки за сезон. Ключевой индикатор работы программы лояльности.</p>
-            <div style="margin-top:10px; padding:9px 12px; border-radius:10px; background:var(--green-light); font-size:12px; color:var(--green); font-weight:600;">Клиенты с 2+ покупками / Всего клиентов × 100</div>
+          <div class="trigger-item">
+            <div class="trigger-icon">⬆️</div>
+            <div>
+              <div class="trigger-when">Upsell</div>
+              <p style="margin:3px 0 0; font-size:13px;">Предложение апгрейда тарифа или дополнительных услуг на основе интереса сегмента.</p>
+            </div>
+            <div class="trigger-badge">По сегменту</div>
+          </div>
+          <div class="trigger-item">
+            <div class="trigger-icon">💤</div>
+            <div>
+              <div class="trigger-when">Реактивация</div>
+              <p style="margin:3px 0 0; font-size:13px;">Не открывал 30 дней → письмо «скучаем», 60 дней → персональный оффер на возврат.</p>
+            </div>
+            <div class="trigger-badge">30 / 60 дней</div>
           </div>
         </div>
+        <div class="info-box purple">
+          <p><strong style="color:var(--purple);">A/B тесты и оптимизация:</strong> регулярное тестирование тем писем, времени отправки и офферов — точность коммуникаций растёт от недели к неделе.</p>
+        </div>
+      </section>
 
-        <table style="margin-top:20px;">
-          <thead>
-            <tr><th>Метрика</th><th>Цель (сезон)</th><th>Семья</th><th>Молодёжь</th><th>VIP</th><th>Частота замера</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Конверсия в заявку</strong></td>
-              <td style="color:var(--cyan-2); font-weight:700;">— (замер)</td>
-              <td>После каждой рассылки</td><td>После каждой рассылки</td><td>После каждой рассылки</td>
-              <td>Еженедельно</td>
-            </tr>
-            <tr>
-              <td><strong>Конверсия в покупку</strong></td>
-              <td style="color:var(--green); font-weight:700;">10%</td>
-              <td>~8–10%</td><td>~10–12%</td><td>~6–8%</td>
-              <td>Еженедельно</td>
-            </tr>
-            <tr>
-              <td><strong>Средний чек</strong></td>
-              <td style="color:var(--fuchsia); font-weight:700;">3 000 ₽</td>
-              <td>~2 500 ₽</td><td>~1 800 ₽</td><td>~6 000 ₽</td>
-              <td>Ежемесячно</td>
-            </tr>
-            <tr>
-              <td><strong>LTV</strong></td>
-              <td style="color:var(--purple); font-weight:700;">Рост к концу сезона</td>
-              <td>7 500 ₽ (3×)</td><td>21 600 ₽ (12×)</td><td>12 000 ₽ (2×)</td>
-              <td>Ежемесячно</td>
-            </tr>
-            <tr>
-              <td><strong>CAC</strong></td>
-              <td style="color:var(--orange); font-weight:700;">Снижение к Стадии 3</td>
-              <td colspan="3">Общий по каналу</td>
-              <td>Ежемесячно</td>
-            </tr>
-            <tr>
-              <td><strong>CPS</strong></td>
-              <td style="color:var(--orange); font-weight:700;">Снижение при росте базы</td>
-              <td colspan="3">Общий по каналу</td>
-              <td>Ежемесячно</td>
-            </tr>
-            <tr>
-              <td><strong>Retention</strong></td>
-              <td style="color:var(--green); font-weight:700;">&gt; 40% к концу сезона</td>
-              <td>3+ покупки</td><td>5+ покупок</td><td>2+ покупки</td>
-              <td>Ежемесячно</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="info-box purple" style="margin-top:16px;">
-          <p><strong style="color:var(--purple);">Источники данных:</strong> ESP (открытия, клики, конверсии) + Битрикс24 (сделки, выручка) + касса (транзакции). Все метрики собираются в единый отчёт и сверяются с планом помесячно.</p>
+      <!-- ЭТАП 4 -->
+      <section class="slide" id="stage4">
+        <div class="funnel-step s4" style="border-radius:16px; margin-bottom:18px;">
+          <div class="stage-header">
+            <div class="stage-badge" style="background:linear-gradient(135deg,#059669,#34d399);color:#fff;">4</div>
+            <div>
+              <div class="stage green">Август — Сентябрь 2026 · Этап 4</div>
+              <h2 style="margin:0;">Накопление данных и переход к RFM</h2>
+            </div>
+          </div>
+        </div>
+        <div class="flow-chain">
+          <div class="flow-item problem"><div class="flow-label">Проблема</div><p>Пока не накоплена история покупок, невозможно точно сегментировать клиентов по поведению.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item solution"><div class="flow-label">Решение</div><p>По мере накопления истории покупок — переход к RFM-модели (Recency, Frequency, Monetary).</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item stage-phase"><div class="flow-label">Этап внедрения</div><p>Август — сентябрь 2026 · Этап 4</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item result"><div class="flow-label">Результат</div><p>Рассылки становятся персонализированными на уровне поведения, а не только продукта.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item next"><div class="flow-label">Следующий этап</div><p>Масштабирование каналов и программ (Этап 5).</p></div>
+        </div>
+        <div class="info-box green">
+          <p><strong style="color:var(--green);">Важно:</strong> RFM — это следующий этап развития CRM, а не обязательное условие первого сезона. Он становится доступен только после того, как в системе накопится достаточно данных о покупках.</p>
         </div>
       </section>
 
       <!-- ПРОДУКТОВЫЕ СЕГМЕНТЫ -->
       <section class="slide" id="segments">
-        <div class="eyebrow">Продуктовые сегменты · Стадия 2</div>
+        <div class="eyebrow">Продуктовые сегменты · Этап 2</div>
         <h2>Матрица: сегмент × тариф × цель рассылки</h2>
         <table>
           <thead>
@@ -885,22 +817,28 @@
               <td>Комфорт, экономия времени, эксклюзивный доступ, высокий сервис</td>
               <td>Персональный, статусный, без лишнего</td>
             </tr>
+            <tr>
+              <td><strong style="color:var(--purple);">Night Riders</strong></td>
+              <td>Вечерний / ночной тариф</td>
+              <td style="color:var(--purple); font-weight:700;">по мере накопления данных</td>
+              <td>Вечерние события, ночные шоу, компании друзей, ограниченные слоты</td>
+              <td>Дерзкий, атмосферный, эксклюзивность вечера</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--cyan-2);">Несегментированная база</strong></td>
+              <td>—</td>
+              <td style="color:var(--cyan-2); font-weight:700;">по общему контент-плану</td>
+              <td>Удержание внимания, сбор данных для последующей сегментации</td>
+              <td>Нейтральный, ознакомительный</td>
+            </tr>
           </tbody>
         </table>
       </section>
 
-      <!-- СТАДИЯ 3 -->
-      <section class="slide" id="stage3">
-        <div class="funnel-step s3" style="border-radius:16px; margin-bottom:18px;">
-          <div class="stage-header">
-            <div class="stage-badge" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;">3</div>
-            <div>
-              <div class="stage purple">Середина августа — Сентябрь · Стадия 3</div>
-              <h2 style="margin:0;">Внедрение RFM-сегментации</h2>
-            </div>
-          </div>
-        </div>
-        <p class="lead">К середине июля ESP накапливает достаточно данных о покупках для построения RFM-модели. Переходим от демографической сегментации к поведенческой.</p>
+      <!-- RFM ДЕТАЛЬНО -->
+      <section class="slide" id="rfm">
+        <div class="eyebrow">RFM-модель · Этап 4</div>
+        <h2>Что такое RFM и как она усиливает сегментацию</h2>
         <div class="row">
           <div class="col-5">
             <h3>Что такое RFM</h3>
@@ -930,7 +868,7 @@
               <div class="rfm-card loyal">
                 <div class="rfm-label">Loyal</div>
                 <div class="rfm-name">Лояльные</div>
-                <p>Постоянные гости. Программа лояльности, персональные предложения, кросс-продажи.</p>
+                <p>Постоянные гости. Персональные предложения, кросс-продажи.</p>
               </div>
               <div class="rfm-card potential">
                 <div class="rfm-label">Potential</div>
@@ -955,18 +893,10 @@
             </div>
           </div>
         </div>
-        <div class="info-box purple">
-          <p><strong style="color:var(--purple);">Результат стадии 3:</strong> каждый клиент получает RFM-метку. Рассылки становятся персонализированными на уровне поведения. Рост конверсии за счёт точности офферов.</p>
-        </div>
-      </section>
-
-      <!-- RFM ДЕТАЛЬНО -->
-      <section class="slide" id="rfm">
-        <div class="eyebrow">RFM-продажи билетов · Стадия 3</div>
-        <h2>Как RFM влияет на продажи каждого тарифа</h2>
+        <h3 style="margin-top:20px;">Как RFM влияет на продажи по сегментам</h3>
         <table>
           <thead>
-            <tr><th>RFM-сегмент</th><th>Семья</th><th>Молодёжь</th><th>VIP</th><th>Приоритет</th></tr>
+            <tr><th>RFM-сегмент</th><th>Семья</th><th>Молодёжь</th><th>VIP</th><th>Night Riders</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -974,110 +904,89 @@
               <td>Эксклюзивные даты, ранний доступ</td>
               <td>Закрытые события, приоритетный вход</td>
               <td>Апгрейд до VIP, персональный менеджер</td>
-              <td style="color:var(--green); font-weight:700;">Максимальный</td>
+              <td>Ранний доступ к ночным ивентам, закрытые вечеринки</td>
             </tr>
             <tr>
               <td><strong style="color:var(--cyan-2);">Лояльные</strong></td>
               <td>Комбо-пакет для семьи, приоритетные анонсы</td>
               <td>Карта постоянного гостя, групповые офферы</td>
               <td>Спецпредложение на апгрейд</td>
-              <td style="color:var(--cyan-2); font-weight:700;">Высокий</td>
+              <td>Групповые ночные офферы, вечерние абонементы</td>
             </tr>
             <tr>
               <td><strong style="color:var(--yellow);">Потенциальные</strong></td>
               <td>Оффер «приведи семью снова»</td>
               <td>Анонс нового аттракциона, групповой оффер</td>
               <td>—</td>
-              <td style="color:var(--yellow); font-weight:700;">Средний</td>
+              <td>Анонс нового ночного шоу</td>
             </tr>
             <tr>
               <td><strong style="color:var(--fuchsia);">Под угрозой</strong></td>
               <td>«Вы не были давно» — напоминание о парке</td>
               <td>Анонс нового контента / события</td>
               <td>—</td>
-              <td style="color:var(--fuchsia); font-weight:700;">Средний</td>
+              <td>«Давно не были вечером» — напоминание</td>
             </tr>
             <tr>
               <td><strong style="color:var(--purple);">Новые</strong></td>
               <td>Welcome + маршрут для семьи</td>
               <td>Welcome + топ аттракционов для компании</td>
               <td>—</td>
-              <td style="color:var(--purple); font-weight:700;">Высокий</td>
+              <td>Welcome + гид по вечерним аттракционам</td>
             </tr>
             <tr>
               <td><strong style="color:#64748b;">Потерянные</strong></td>
               <td>Win-back: акцент на новом сезоне</td>
               <td>Win-back: что нового в парке</td>
               <td>—</td>
-              <td style="color:#64748b; font-weight:700;">Низкий</td>
+              <td>Win-back: что нового вечером</td>
             </tr>
           </tbody>
         </table>
       </section>
 
-      <!-- СТАДИЯ 4 -->
-      <section class="slide" id="stage4">
-        <div class="funnel-step s4" style="border-radius:16px; margin-bottom:18px;">
-          <div class="stage-header">
-            <div class="stage-badge" style="background:linear-gradient(135deg,#059669,#34d399);color:#fff;">4</div>
-            <div>
-              <div class="stage green">Сентябрь · Стадия 4</div>
-              <h2 style="margin:0;">Омниканальность и новые каналы продвижения</h2>
-            </div>
-          </div>
-        </div>
-        <p class="lead">Email — основа, но не единственный канал. Выстраиваем единую коммуникационную систему: клиент получает согласованные сообщения в нужном ему канале.</p>
-        <div class="cards-4">
-          <div class="card">
-            <div class="stage cyan">Email</div>
-            <h3>Основной канал</h3>
-            <p>Сегментированные рассылки, триггеры, RFM-сценарии. Запущен на стадии 2–3.</p>
-          </div>
-          <div class="card">
-            <div class="stage cyan">SMS / WhatsApp</div>
-            <h3>Дожим перед событием</h3>
-            <p>Напоминание о визите, срочные анонсы событий, реактивация молчащих из email.</p>
-          </div>
-          <div class="card">
-            <div class="stage cyan">Push-уведомления</div>
-            <h3>Мобильный канал</h3>
-            <p>Срочные анонсы, напоминания, персональные офферы — при наличии приложения.</p>
-          </div>
-          <div class="card">
-            <div class="stage cyan">Чат-боты</div>
-            <h3>Автоответы и продажи</h3>
-            <p>Бот в Telegram / VK: ответы на FAQ, выбор тарифа, переход к покупке билета.</p>
-          </div>
-        </div>
-        <div class="info-box green">
-          <p><strong style="color:var(--green);">Принцип омниканальности:</strong> клиент не получает одинаковое сообщение в разных каналах одновременно. Email прогревает, SMS дожимает, push напоминает.</p>
-        </div>
-      </section>
-
-      <!-- СТАДИЯ 5 -->
+      <!-- ЭТАП 5 -->
       <section class="slide" id="stage5">
         <div class="funnel-step s5" style="border-radius:16px; margin-bottom:18px;">
           <div class="stage-header">
             <div class="stage-badge" style="background:linear-gradient(135deg,#a21caf,#d946ef);color:#fff;">5</div>
             <div>
-              <div class="stage fuchsia">Конец сезона · Стадия 5</div>
-              <h2 style="margin:0;">Программа лояльности</h2>
+              <div class="stage fuchsia">Сентябрь 2026 и далее · Этап 5</div>
+              <h2 style="margin:0;">Масштабирование</h2>
             </div>
           </div>
         </div>
-        <p class="lead">Завершение сезона — старт работы на следующий год. Программа лояльности превращает разовых гостей в постоянных и создаёт предсказуемый поток возвращений.</p>
-        <div class="cards-3">
+        <div class="flow-chain">
+          <div class="flow-item problem"><div class="flow-label">Проблема</div><p>Email — не единственный канал: часть аудитории вне почты, нет механики удержания на будущее.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item solution"><div class="flow-label">Решение</div><p>Подключение SMS, WhatsApp, Push; запуск программы лояльности; выстраивание омниканальности.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item stage-phase"><div class="flow-label">Этап внедрения</div><p>Сентябрь 2026 и далее · Этап 5</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item result"><div class="flow-label">Результат</div><p>CRM становится многоканальной системой, удерживающей гостей на следующий сезон.</p></div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-item next"><div class="flow-label">Следующий этап</div><p>Сезон 2027 стартует с готовой, сегментированной и лояльной базой.</p></div>
+        </div>
+        <div class="cards-4">
           <div class="card">
-            <h3>Механика уровней</h3>
-            <p>Программа строится на статусах и привилегиях. Чем активнее гость — тем выше уровень и эксклюзивнее опыт. Конкретная механика бонусов прорабатывается отдельно.</p>
+            <div class="stage cyan">SMS</div>
+            <h3>Дожим перед событием</h3>
+            <p>Напоминание о визите, срочные анонсы событий, реактивация молчащих из email.</p>
           </div>
           <div class="card">
-            <h3>Уровни участника</h3>
-            <p>3 уровня на основе числа покупок: Гость → Постоянный гость → Амбассадор парка. Каждый уровень открывает новые привилегии.</p>
+            <div class="stage cyan">WhatsApp</div>
+            <h3>Личный канал</h3>
+            <p>Персональные напоминания и офферы там, где клиент чаще всего на связи.</p>
           </div>
           <div class="card">
-            <h3>Интеграция с CRM</h3>
-            <p>Статус и история покупок в ESP/CRM. Триггерные письма сообщают об уровне и мотивируют к следующей покупке.</p>
+            <div class="stage cyan">Push</div>
+            <h3>Мобильный канал</h3>
+            <p>Срочные анонсы, напоминания, персональные офферы — при наличии приложения.</p>
+          </div>
+          <div class="card">
+            <div class="stage cyan">Программа лояльности</div>
+            <h3>Уровни и привилегии</h3>
+            <p>3 уровня: Гость → Постоянный гость → Амбассадор парка. Статус интегрирован с CRM.</p>
           </div>
         </div>
         <table style="margin-top:16px;">
@@ -1106,47 +1015,88 @@
           </tbody>
         </table>
         <div class="info-box fuchsia">
-          <p><strong style="color:var(--fuchsia);">Результат стадии 5:</strong> база сегментирована по поведению и статусу. Следующий сезон начинается с готовой активной базой лояльных гостей.</p>
+          <p><strong style="color:var(--fuchsia);">Принцип омниканальности:</strong> клиент не получает одинаковое сообщение в разных каналах одновременно. Email прогревает, SMS/WhatsApp дожимает, push напоминает.</p>
         </div>
       </section>
 
       <!-- ТРИГГЕРЫ -->
       <section class="slide" id="triggers">
         <div class="eyebrow">Триггерные рассылки · Полная карта</div>
-        <h2>Автоматические сценарии — 24/7 без ручной работы</h2>
+        <h2>Автоматические сценарии — без ручной работы</h2>
         <table>
           <thead>
-            <tr><th>Триггер</th><th>Когда срабатывает</th><th>Цель</th><th>Канал</th><th>Стадия</th></tr>
+            <tr><th>Триггер</th><th>Когда срабатывает</th><th>Цель</th><th>Канал</th><th>Этап</th></tr>
           </thead>
           <tbody>
-            <tr><td><strong>Welcome</strong></td><td>Новый подписчик</td><td>Знакомство с парком и первая покупка</td><td>Email (3 письма)</td><td>Стадия 2</td></tr>
-            <tr><td><strong>Брошенная корзина</strong></td><td>Начал покупку, не завершил</td><td>Дожим до оплаты</td><td>Email + SMS</td><td>Стадия 2</td></tr>
-            <tr><td><strong>Подтверждение покупки</strong></td><td>Сразу после оплаты</td><td>Подготовка к визиту, up-sell</td><td>Email</td><td>Стадия 2</td></tr>
-            <tr><td><strong>Напоминание перед визитом</strong></td><td>За 2 дня до даты</td><td>Снижение no-show, маршрут</td><td>Email + push</td><td>Стадия 2</td></tr>
-            <tr><td><strong>После визита</strong></td><td>+2 дня после даты билета</td><td>Отзыв + оффер на возврат</td><td>Email</td><td>Стадия 2</td></tr>
-            <tr><td><strong>Реактивация (30 дней)</strong></td><td>Не открывал 30 дней</td><td>Вернуть в воронку</td><td>Email</td><td>Стадия 2</td></tr>
-            <tr><td><strong>Реактивация (60 дней)</strong></td><td>Не открывал 60 дней</td><td>Персональный оффер или отписка</td><td>Email + SMS</td><td>Стадия 2</td></tr>
-            <tr><td><strong>RFM: «Под угрозой»</strong></td><td>R↑ при наличии F и M</td><td>Win-back с сильным оффером</td><td>Email + SMS</td><td>Стадия 3</td></tr>
-            <tr><td><strong>Апгрейд статуса</strong></td><td>Клиент достиг нового уровня</td><td>Уведомление + привилегии</td><td>Email</td><td>Стадия 5</td></tr>
+            <tr><td><strong>Welcome</strong></td><td>Новый подписчик</td><td>Знакомство с парком и первая покупка</td><td>Email (3 письма)</td><td>Этап 3</td></tr>
+            <tr><td><strong>Первая покупка</strong></td><td>Билет куплен впервые</td><td>Подготовка к визиту, up-sell</td><td>Email</td><td>Этап 3</td></tr>
+            <tr><td><strong>Напоминание перед визитом</strong></td><td>За 2 дня до даты</td><td>Снижение no-show, маршрут</td><td>Email + push</td><td>Этап 3 / 5</td></tr>
+            <tr><td><strong>Повторная покупка</strong></td><td>+2 дня после визита</td><td>Отзыв + оффер на возврат</td><td>Email</td><td>Этап 3</td></tr>
+            <tr><td><strong>Upsell</strong></td><td>После покупки базового тарифа</td><td>Апгрейд тарифа / доп. услуги</td><td>Email</td><td>Этап 3</td></tr>
+            <tr><td><strong>Реактивация (30 дней)</strong></td><td>Не открывал 30 дней</td><td>Вернуть в воронку</td><td>Email</td><td>Этап 3</td></tr>
+            <tr><td><strong>Реактивация (60 дней)</strong></td><td>Не открывал 60 дней</td><td>Персональный оффер или отписка</td><td>Email + SMS</td><td>Этап 3 / 5</td></tr>
+            <tr><td><strong>RFM: «Под угрозой»</strong></td><td>R↑ при наличии F и M</td><td>Win-back с сильным оффером</td><td>Email + SMS</td><td>Этап 4</td></tr>
+            <tr><td><strong>Апгрейд статуса</strong></td><td>Клиент достиг нового уровня лояльности</td><td>Уведомление + привилегии</td><td>Email</td><td>Этап 5</td></tr>
           </tbody>
         </table>
+      </section>
+
+      <!-- ПРИОРИТЕТЫ -->
+      <section class="slide" id="priorities">
+        <div class="eyebrow">Приоритеты внедрения</div>
+        <h2>Must Have / Should Have / Nice to Have</h2>
+        <p class="lead">Разделение задач по приоритету помогает не размывать фокус первого сезона: сначала фундамент, затем усиление, и только потом — дополнительные каналы и механики.</p>
+        <div class="cards-3">
+          <div class="priority-card must">
+            <div class="p-sub">Must Have</div>
+            <h3>Без этого сезон не запустится</h3>
+            <ul class="priority-items">
+              <li>ESP</li>
+              <li>Очистка базы</li>
+              <li>Welcome</li>
+              <li>Реактивация</li>
+              <li>Карты коммуникаций</li>
+              <li>Сегментация</li>
+            </ul>
+          </div>
+          <div class="priority-card should">
+            <div class="p-sub">Should Have</div>
+            <h3>Усиливает результат</h3>
+            <ul class="priority-items">
+              <li>Продуктовые цепочки</li>
+              <li>Тематические зоны</li>
+              <li>Регулярный контент</li>
+              <li>RFM после накопления данных</li>
+            </ul>
+          </div>
+          <div class="priority-card nice">
+            <div class="p-sub">Nice to Have</div>
+            <h3>Развитие на будущее</h3>
+            <ul class="priority-items">
+              <li>Программа лояльности</li>
+              <li>SMS</li>
+              <li>WhatsApp</li>
+              <li>Push</li>
+              <li>Чат-боты</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- ROAD MAP -->
       <section class="slide" id="roadmap">
         <div class="eyebrow">Road Map</div>
-        <h2>4 месяца: от Excel до полноценной CRM-системы</h2>
+        <h2>5 этапов: от Excel до полноценной CRM-системы</h2>
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-dot d1">1</div>
             <div class="tl-body">
-              <div class="tl-date">Июнь 2026 (1-я половина) — Стадия 1</div>
-              <h3>Техническая подготовка</h3>
+              <div class="tl-date">Май — Июнь 2026 — Этап 1</div>
+              <h3>Создание инфраструктуры</h3>
               <ul class="checklist">
                 <li>Выбор и настройка ESP</li>
                 <li>SPF / DKIM / DMARC + прогрев домена</li>
-                <li>Объединение Excel-баз в единую</li>
-                <li>Очистка, дедупликация, валидация</li>
+                <li>Объединение Excel-баз в единую, очистка и валидация</li>
                 <li>Первая реактивационная рассылка</li>
               </ul>
             </div>
@@ -1154,68 +1104,79 @@
           <div class="tl-item">
             <div class="tl-dot d2">2</div>
             <div class="tl-body">
-              <div class="tl-date">Июнь — Июль 2026 — Стадия 2</div>
-              <h3>Сегментация и контент-план</h3>
+              <div class="tl-date">Июнь — Июль 2026 — Этап 2</div>
+              <h3>Построение сегментации</h3>
               <ul class="checklist">
-                <li>Сегментация базы: Семья / Молодёжь / VIP</li>
-                <li>Контент-план 3 письма/нед на каждый сегмент</li>
-                <li>Запуск 5 триггерных сценариев</li>
-                <li>Первые замеры конверсии по сегментам</li>
-                <li>A/B тесты тем и времени отправки</li>
+                <li>Сегменты: Семья / Молодёжь / VIP / Night Riders / Несегментированная база</li>
+                <li>Карты коммуникаций по каждому сегменту</li>
+                <li>Единый контент-план</li>
               </ul>
             </div>
           </div>
           <div class="tl-item">
             <div class="tl-dot d3">3</div>
             <div class="tl-body">
-              <div class="tl-date">Середина августа — Сентябрь 2026 — Стадия 3</div>
-              <h3>RFM-сегментация</h3>
+              <div class="tl-date">Июль — Август 2026 — Этап 3</div>
+              <h3>Запуск автоматизации</h3>
               <ul class="checklist">
-                <li>Сбор R, F, M данных из ESP и кассы</li>
-                <li>Построение RFM-матрицы по базе</li>
-                <li>Персонализированные цепочки под каждый RFM-сегмент</li>
-                <li>RFM-продажи по всем трём сегментам</li>
+                <li>Welcome, Первая покупка, Повторная покупка, Upsell, Реактивация</li>
+                <li>Первые A/B тесты</li>
+                <li>Регулярная оптимизация коммуникаций</li>
               </ul>
             </div>
           </div>
           <div class="tl-item">
             <div class="tl-dot d4">4</div>
             <div class="tl-body">
-              <div class="tl-date">Сентябрь 2026 — Стадия 4</div>
-              <h3>Омниканальность</h3>
+              <div class="tl-date">Август — Сентябрь 2026 — Этап 4</div>
+              <h3>Накопление данных и RFM</h3>
               <ul class="checklist">
-                <li>Подключение SMS / WhatsApp</li>
-                <li>Push-уведомления (при наличии технической возможности)</li>
-                <li>Чат-бот для FAQ и перехода к покупке</li>
-                <li>Единая карта коммуникаций без дублирования</li>
+                <li>Сбор R, F, M данных из ESP и кассы</li>
+                <li>Построение RFM-матрицы по базе</li>
+                <li>RFM как следующий уровень, а не обязательное условие сезона</li>
               </ul>
             </div>
           </div>
           <div class="tl-item">
             <div class="tl-dot d5">5</div>
             <div class="tl-body">
-              <div class="tl-date">Конец сезона — Стадия 5</div>
-              <h3>Программа лояльности</h3>
+              <div class="tl-date">Сентябрь 2026 и далее — Этап 5</div>
+              <h3>Масштабирование</h3>
               <ul class="checklist">
-                <li>Разработка механики уровней и привилегий</li>
-                <li>Интеграция статуса с CRM и ESP</li>
-                <li>Триггеры на смену статуса и рост активности</li>
-                <li>Подготовка базы лояльных клиентов к следующему сезону</li>
+                <li>Подключение SMS / WhatsApp / Push</li>
+                <li>Запуск программы лояльности</li>
+                <li>Омниканальность без дублирования сообщений</li>
               </ul>
             </div>
           </div>
         </div>
 
         <div style="margin-top:22px; padding:22px; border-radius:20px; background:linear-gradient(135deg,#ddf0fc,#cce8f8); border:1.5px solid rgba(14,165,233,0.30); box-shadow:0 4px 20px rgba(14,165,233,0.12);">
-          <div class="eyebrow" style="margin-bottom:12px;">Итог сезона</div>
-          <div class="cards-3" style="gap:12px; grid-template-columns:repeat(2,1fr);">
+          <div class="eyebrow" style="margin-bottom:12px;">Главная мысль документа</div>
+          <p class="lead" style="margin-bottom:14px;">CRM — это долгосрочная система, а не разовая рассылка. Она:</p>
+          <div class="cards-4" style="gap:12px;">
             <div style="text-align:center; padding:16px; background:rgba(255,255,255,0.60); border-radius:16px; border:1.5px solid rgba(14,165,233,0.20);">
-              <div style="font-size:38px; font-weight:900; color:var(--cyan-2);">50 000</div>
-              <div style="color:var(--muted); font-size:13px; margin-top:4px;">билетов через CRM-канал</div>
+              <div style="font-size:26px;">🗂️</div>
+              <div style="color:var(--text); font-size:13px; font-weight:700; margin-top:6px;">Собирает данные</div>
+            </div>
+            <div style="text-align:center; padding:16px; background:rgba(255,255,255,0.60); border-radius:16px; border:1.5px solid rgba(5,150,105,0.20);">
+              <div style="font-size:26px;">🎯</div>
+              <div style="color:var(--text); font-size:13px; font-weight:700; margin-top:6px;">Сегментирует аудиторию</div>
+            </div>
+            <div style="text-align:center; padding:16px; background:rgba(255,255,255,0.60); border-radius:16px; border:1.5px solid rgba(124,58,237,0.20);">
+              <div style="font-size:26px;">⚙️</div>
+              <div style="color:var(--text); font-size:13px; font-weight:700; margin-top:6px;">Автоматизирует коммуникации</div>
             </div>
             <div style="text-align:center; padding:16px; background:rgba(255,255,255,0.60); border-radius:16px; border:1.5px solid rgba(217,70,239,0.20);">
-              <div style="font-size:38px; font-weight:900; color:var(--fuchsia);">10%</div>
-              <div style="color:var(--muted); font-size:13px; margin-top:4px;">конверсия база → покупка</div>
+              <div style="font-size:26px;">🔁</div>
+              <div style="color:var(--text); font-size:13px; font-weight:700; margin-top:6px;">Увеличивает повторные покупки</div>
+            </div>
+          </div>
+          <div class="goal-row" style="margin-top:14px;">
+            <div class="goal-card" style="grid-column: span 3; background:linear-gradient(180deg,#ffffff,#e8f6fe);">
+              <div class="g-label">Цель сезона</div>
+              <div class="g-num" style="color:var(--cyan-2);">50 000 билетов</div>
+              <p>CRM постепенно повышает эффективность канала и приближает к этой цели — без обещания фиксированной выручки.</p>
             </div>
           </div>
         </div>
